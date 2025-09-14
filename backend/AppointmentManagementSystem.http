@@ -1,0 +1,37 @@
+@Appointment_Management_System_HostAddress = http://localhost:5050
+
+### Get all appointments
+GET {{Appointment_Management_System_HostAddress}}/Appointments
+Accept: application/json
+
+### Create a new appointment
+POST {{Appointment_Management_System_HostAddress}}/Appointments
+Content-Type: application/json
+Accept: application/json
+
+{
+  "patientName": "John Doe",
+  "doctorName": "Dr. Smith",
+  "startTime": "2024-06-01T09:00:00",
+  "endTime": "2024-06-01T09:30:00"
+}
+
+### Update an appointment by ID
+PUT {{Appointment_Management_System_HostAddress}}/Appointments/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": 1,
+  "patientName": "Jane Doe",
+  "doctorName": "Dr. Smith",
+  "startTime": "2024-06-01T10:00:00",
+  "endTime": "2024-06-01T10:30:00"
+}
+
+### Delete an appointment by ID
+DELETE {{Appointment_Management_System_HostAddress}}/Appointments/1
+Accept: application/json
+
+
+# Response

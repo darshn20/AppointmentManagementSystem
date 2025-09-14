@@ -1,0 +1,37 @@
+<div class="min-h-screen bg-gray-100 py-8">
+    <div class="container mx-auto px-4">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">{{ title }}</h1>
+            <p class="text-gray-600">Manage your healthcare appointments</p>
+        </header>
+
+        <div class="max-w-6xl mx-auto space-y-8">
+            <!-- Book Appointment Section -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-2xl font-semibold text-gray-800">Book Appointment</h2>
+                    <button *ngIf="!showForm" (click)="onShowForm()"
+                        class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">
+                        New Appointment
+                    </button>
+                </div>
+
+                <div *ngIf="showForm">
+                    <app-appointment-form [appointment]="editingAppointment" (formSubmit)="onFormSubmit($event)"
+                        (formCancel)="onFormCancel()"></app-appointment-form>
+                </div>
+
+                <div *ngIf="!showForm" class="text-center py-8 text-gray-500">
+                    Click "New Appointment" to book an appointment
+                </div>
+            </div>
+
+            <!-- Appointments List Section -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <app-appointment-list [appointments]="appointments" [loading]="loading"
+                    (editAppointment)="onEditAppointment($event)"
+                    (deleteAppointment)="onDeleteAppointment($event)"></app-appointment-list>
+            </div>
+        </div>
+    </div>
+</div>
